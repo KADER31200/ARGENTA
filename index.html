@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Connexion Argenta</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="top-bar">
-    <img src="images/logoargenta.png" alt="Logo Argenta" class="logo">
+    <img src="images/logoargenta.png" alt="Logo Argenta" class="logo" />
     <div class="lang-help">
       <a href="#">Nederlands</a>
       <a href="#">Aide</a>
@@ -19,34 +19,76 @@
     <section class="login-box">
       <h1>Accéder à la Banque par Internet</h1>
 
-      <div class="auth-method">
-        <p class="subtitle">Se connecter avec</p>
-        <h2><img src="images/itsme-logo.png" alt="itsme" class="icon"> Smartphone et itsme®</h2>
-
-        <label for="card-number">1. Saisissez votre numéro de carte</label>
-        <input type="text" id="card-number" placeholder=".... .... .... ....">
-        <div class="save-card">
-          <input type="checkbox" id="save">
-          <label for="save">Sauvegarder mon numéro de carte</label>
+      <!-- Bloc itsme -->
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion('itsme')">
+          <p class="subtitle">Se connecter avec</p>
+          <h2><img src="images/itsme-logo.png" alt="itsme" class="icon" /> Smartphone et itsme®</h2>
+          <span class="arrow">⌄</span>
         </div>
-        <button>Me connecter</button>
+        <div class="accordion-body" id="itsme">
+          <label for="card-number-1">1. Saisissez votre numéro de carte</label>
+          <input type="text" id="card-number-1" placeholder=".... .... .... ...." />
+          <div class="save-card">
+            <input type="checkbox" id="save-1" />
+            <label for="save-1">Sauvegarder mon numéro de carte</label>
+          </div>
+          <button>Me connecter</button>
+        </div>
       </div>
 
-      <div class="divider"></div>
-
-      <div class="auth-method">
-        <p class="subtitle">Se connecter avec</p>
-        <h2><img src="images/itsme-logo.png" alt="digipass" class="icon"> Carte de débit et digipass</h2>
+      <!-- Bloc digipass -->
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion('digipass')">
+          <p class="subtitle">Se connecter avec</p>
+          <h2><img src="images/digipass.png" alt="digipass" class="icon" /> Carte de débit et digipass</h2>
+          <span class="arrow">⌄</span>
+        </div>
+        <div class="accordion-body" id="digipass">
+          <label for="card-number-2">1. Saisissez votre numéro de carte</label>
+          <input type="text" id="card-number-2" placeholder=".... .... .... ...." />
+          <div class="save-card">
+            <input type="checkbox" id="save-2" />
+            <label for="save-2">Sauvegarder mon numéro de carte</label>
+          </div>
+          <button>Me connecter</button>
+        </div>
       </div>
     </section>
 
     <aside class="image-box">
-      <img src="images/famille.jpg" alt="Famille à la plage">
+      <img src="images/famille.jpg" alt="Famille à la plage" />
     </aside>
   </main>
 
   <footer class="warning-box">
     <p>Ne réagissez jamais à des e-mails ou messages inhabituels !</p>
   </footer>
+
+  <script>
+    function toggleAccordion(id) {
+      const allBodies = document.querySelectorAll(".accordion-body");
+      const allArrows = document.querySelectorAll(".accordion-header .arrow");
+
+      allBodies.forEach(body => {
+        if (body.id === id) {
+          body.classList.toggle("active");
+        } else {
+          body.classList.remove("active");
+        }
+      });
+
+      allArrows.forEach(arrow => {
+        arrow.textContent = "⌄";
+      });
+
+      const selectedArrow = document.querySelector(
+        `.accordion-header[onclick*="${id}"] .arrow`
+      );
+      if (document.getElementById(id).classList.contains("active")) {
+        selectedArrow.textContent = "⌃";
+      }
+    }
+  </script>
 </body>
 </html>
