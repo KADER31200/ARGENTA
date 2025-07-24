@@ -59,29 +59,63 @@ body {
   margin-bottom: 30px;
 }
 
-.auth-method {
-  margin-bottom: 30px;
-}
-
-.auth-method .subtitle {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 5px;
-}
-
-.auth-method h2 {
-  font-size: 18px;
+/* Accordion général */
+.accordion {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
   margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  background-color: #f8f8f8;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+}
+
+.accordion-header h2 {
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: 18px;
+  color: #004155;
 }
 
-.auth-method .icon {
+.accordion-header .subtitle {
+  font-size: 14px;
+  color: #004155;
+  font-weight: 400;
+}
+
+.accordion-header .icon {
   width: 25px;
-  height: auto;
 }
 
+.accordion-header .arrow {
+  position: absolute;
+  right: 20px;
+  top: 30px;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+/* Contenu masqué */
+.accordion-body {
+  display: none;
+  padding: 20px;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+}
+
+.accordion-body.active {
+  display: block;
+}
+
+/* Champ formulaire */
 label {
   font-weight: 600;
   display: block;
@@ -120,11 +154,6 @@ button {
 
 button:hover {
   background-color: #005c32;
-}
-
-.divider {
-  border-top: 1px solid #ccc;
-  margin: 30px 0;
 }
 
 /* Bloc image */
